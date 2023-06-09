@@ -14,8 +14,10 @@ let scanDomain = () => {
   let domainName = document.getElementById("domainId").value;
   let finalURL = url + domainName;
   fetch(finalURL, options).then((res) => res.json()).then((data) => {
-    // console.log(data);
-    datas.innerHTML = `Domain name: ${data.domain_name} <br> Country:  ${data.country} <br> Creation Date: ${data.creation_date}<br> email: ${data.emails}<br> Expiration Date: ${data.expiration_date}<br> Servers: ${data.name_servers}<br> Organization: ${data.org}<br> Registrar: ${data.registrar}<br> State: ${data.state}<br> Updated Date: ${data.updated_date}` ;
+    let creation_date = new Date(data.creation_date);
+    let expiration_date = new Date(data.expiration_date);
+    let updated_date = new Date(data.updated_date);
+    datas.innerHTML = `Domain name:${data.domain_name} <br> Country:${data.country} <br> Creation Time:${creation_date} <br> email:${data.emails} <br> Expiration Time:${expiration_date} <br> Servers:${data.name_servers} <br> Organization:${data.org} <br> Registrar:${data.registrar} <br> State:${data.state} <br> Updated Time:${updated_date}` ;
   });
 };
 
